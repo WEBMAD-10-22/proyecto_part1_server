@@ -44,7 +44,7 @@ const LoginController = (req, res, next) => {
       // res.status(400).json(MESSAGE_ERROR_LOGIN);
 
       if (user && bcrypt.compareSync(password, user.password)) { 
-        res.status(200).json({ token: signJwt(user._id.toString(), user.email) });
+        res.status(200).json({ token: signJwt(user._id.toString(), user.email, user.role) });
       } else {
         res.status(400).json(MESSAGE_ERROR_LOGIN);
       }
